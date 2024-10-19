@@ -16,18 +16,18 @@ const Range = () => {
       </div>
 
       {/* Categories Section */}
-      <div className="flex gap-8">
+      <div className="flex flex-wrap justify-center gap-8">
         {categories.map((category) => (
           <div
             key={category.id}
-            className="flex flex-col items-center space-y-4"
+            className="flex flex-col items-center space-y-4 w-full sm:w-1/3 md:w-1/4 lg:w-1/5"
           >
             <Image
               src={category.src}
               alt={category.name}
               width={300}
               height={300}
-              className="rounded-lg object-cover"
+              className="rounded-lg object-cover w-full h-auto"
             />
             <p className="text-xl font-medium">{category.name}</p>
           </div>
