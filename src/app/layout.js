@@ -41,9 +41,9 @@ export default function RootLayout({ children }) {
         />
         <div className="flex flex-col min-h-screen">
           <Toaster position="top-center" />
-          <Navbar />
-
           <PageTransition>
+            <Navbar />
+
             <main className="flex-grow">{children}</main>
           </PageTransition>
           <Footer />

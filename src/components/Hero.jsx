@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <div className="relative w-full h-[calc(100vh-64px)] bg-hero bg-cover bg-center bg-no-repeat flex items-center justify-end">
@@ -15,9 +17,11 @@ const Hero = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis.
         </p>
-        <button className="text-sm bg-primary text-white py-2 px-6 mt-4 hover:bg-amber-700 transition duration-300 w-fit rounded-md">
-          BUY NOW
-        </button>
+        <Link href="/shop">
+          <button className="text-sm bg-primary text-white py-2 px-6 mt-4 hover:bg-amber-700 transition duration-300 w-fit rounded-md">
+            BUY NOW
+          </button>
+        </Link>
       </div>
     </div>
   );

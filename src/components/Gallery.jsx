@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const Gallery = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -18,7 +19,7 @@ const Gallery = () => {
     ],
     [
       "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9ybml0dXJlJTIwaG9tZXxlbnwwfHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3Dg",
+      "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
       "https://images.unsplash.com/photo-1551133988-ad26c02243e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9ybml0dXJlJTIwaG9tZXxlbnwwfHwwfHx8MA%3D%3D",
     ],
     [
@@ -29,9 +30,9 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 relative">
       <h1 className="text-4xl font-bold text-center mb-2">OUR GALLERY</h1>
-      <h4 className=" text-primary text-lg font-medium text-center mb-12">
+      <h4 className="text-primary text-lg font-medium text-center mb-12">
         Discover beautiful moments
       </h4>
       <motion.div
@@ -47,14 +48,18 @@ const Gallery = () => {
                 key={`${columnIndex}-${imageIndex}`}
                 layoutId={`container-${columnIndex}-${imageIndex}`}
                 onClick={() => setSelectedId(`${columnIndex}-${imageIndex}`)}
-                className="cursor-pointer aspect-square "
+                className="cursor-pointer aspect-square relative"
               >
-                <motion.img
+                <Image
                   src={src}
                   alt={`gallery-photo-${columnIndex}-${imageIndex}`}
-                  className="w-full h-full rounded-lg object-cover flex-1"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
+                  className="w-full h-full rounded-lg object-cover"
+                  width={500}
+                  height={500}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
                 />
               </motion.div>
             ))}
@@ -65,18 +70,22 @@ const Gallery = () => {
       {selectedId !== null && (
         <motion.div
           layoutId={`container-${selectedId}`}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          className="absolute top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
           onClick={() => setSelectedId(null)}
         >
-          <motion.img
-            src={
-              images[parseInt(selectedId.split("-")[0])][
-                parseInt(selectedId.split("-")[1])
-              ]
-            }
-            alt={`gallery-photo-${selectedId}`}
-            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
-          />
+          <div className="max-w-4xl w-full p-4">
+            <Image
+              src={
+                images[parseInt(selectedId.split("-")[0])][
+                  parseInt(selectedId.split("-")[1])
+                ]
+              }
+              alt={`gallery-photo-${selectedId}`}
+              width={800}
+              height={600}
+              className="rounded-lg object-contain w-full h-auto"
+            />
+          </div>
         </motion.div>
       )}
     </div>
