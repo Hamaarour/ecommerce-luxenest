@@ -31,7 +31,7 @@ A premium real estate platform built with Next.js, offering an exceptional exper
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/yourusername/luxenest.git
+git clone https://github.com/Hamaarour/ecommerce-luxenest.git luxenest
 cd luxenest
 ```
 
