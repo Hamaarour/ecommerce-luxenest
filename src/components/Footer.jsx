@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   const FullYear = new Date().getFullYear();
   return (
@@ -11,9 +12,9 @@ const Footer = () => {
             <h2 className="text-2xl font-bold">LuxeNest</h2>
           </div>
           <address className="not-italic text-sm text-gray-600">
-            <p>400 University Drive Suite 200 Coral</p>
+            <p>410 University Drive Suite 222 Coral</p>
             <p>Gables,</p>
-            <p>FL 33134 USA</p>
+            <p>FL 32134 USA</p>
           </address>
         </div>
 
@@ -21,18 +22,15 @@ const Footer = () => {
         <div className="space-y-4">
           <h3 className="text-sm text-gray-500">Links</h3>
           <nav className="flex flex-col space-y-2">
-            <a href="/home" className="text-sm hover:text-gray-600">
+            <Link href="/home" className="text-sm hover:text-gray-600">
               Home
-            </a>
-            <a href="/shop" className="text-sm hover:text-gray-600">
+            </Link>
+            <Link href="/shop" className="text-sm hover:text-gray-600">
               Shop
-            </a>
-            <a href="/about" className="text-sm hover:text-gray-600">
-              About
-            </a>
-            <a href="/contact" className="text-sm hover:text-gray-600">
+            </Link>
+            <Link href="/contact" className="text-sm hover:text-gray-600">
               Contact
-            </a>
+            </Link>
           </nav>
         </div>
 
@@ -40,15 +38,21 @@ const Footer = () => {
         <div className="space-y-4">
           <h3 className="text-sm text-gray-500">Help</h3>
           <nav className="flex flex-col space-y-2">
-            <a href="/payment-options" className="text-sm hover:text-gray-600">
+            <Link
+              href="/payment-options"
+              className="text-sm hover:text-gray-600"
+            >
               Payment Options
-            </a>
-            <a href="/returns" className="text-sm hover:text-gray-600">
+            </Link>
+            <Link href="/returns" className="text-sm hover:text-gray-600">
               Returns
-            </a>
-            <a href="/privacy-policies" className="text-sm hover:text-gray-600">
+            </Link>
+            <Link
+              href="/privacy-policies"
+              className="text-sm hover:text-gray-600"
+            >
               Privacy Policies
-            </a>
+            </Link>
           </nav>
         </div>
 
