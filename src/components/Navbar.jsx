@@ -177,6 +177,11 @@ const Header = () => {
                     onMouseLeave={() => setShowTooltip("")}
                   >
                     <Github size={20} />
+                    {showTooltip && (
+                      <span className="absolute left-10 bottom-4 transform -translate-x-1/2 -translate-y-full bg-gray-800 text-white text-xs rounded py-1 px-2 mb-2">
+                        {showTooltip}
+                      </span>
+                    )}
                   </button>
                   <button
                     aria-label="User account"

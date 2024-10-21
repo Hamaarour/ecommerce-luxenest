@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[calc(100vh-64px)] bg-hero bg-cover bg-center bg-no-repeat flex items-center justify-end">
+    <div className="relative w-full h-screen bg-hero bg-cover bg-center bg-no-repeat flex items-center justify-end">
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-10"></div>
 
