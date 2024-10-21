@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Search, User, Heart, ShoppingCart } from "lucide-react";
+import { Menu, X, Github, User, Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useStore from "../app/store/store";
@@ -15,7 +15,7 @@ const Header = () => {
 
   const cart = useStore((state) => state.cart);
   const favorites = useStore((state) => state.favorites);
-
+  const [showTooltip, setShowTooltip] = useState("");
   const menuVariants = {
     closed: {
       opacity: 0,
@@ -72,10 +72,23 @@ const Header = () => {
           {/* Desktop Icons */}
           <div className="hidden md:flex items-center space-x-4">
             <button
-              aria-label="Search"
-              className="p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-full transition-colors"
+              aria-label="Github"
+              className="relative p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-full transition-colors"
+              onClick={() =>
+                window.open(
+                  "https://github.com/Hamaarour/ecommerce-luxenest",
+                  "_blank"
+                )
+              }
+              onMouseEnter={() => setShowTooltip("Source Code")}
+              onMouseLeave={() => setShowTooltip("")}
             >
-              <Search size={20} />
+              <Github size={20} />
+              {showTooltip && (
+                <span className="absolute -left-10 transform -translate-x-1/2 -translate-y-full bg-gray-800 text-white text-xs rounded py-1 px-2 mb-2">
+                  {showTooltip}
+                </span>
+              )}
             </button>
             <button
               aria-label="User account"
@@ -154,8 +167,16 @@ const Header = () => {
                   <button
                     aria-label="Search"
                     className="text-gray-400 hover:text-gray-500"
+                    onClick={() =>
+                      window.open(
+                        "https://github.com/Hamaarour/ecommerce-luxenest",
+                        "_blank"
+                      )
+                    }
+                    onMouseEnter={() => setShowTooltip("Source Code")}
+                    onMouseLeave={() => setShowTooltip("")}
                   >
-                    <Search size={20} />
+                    <Github size={20} />
                   </button>
                   <button
                     aria-label="User account"
