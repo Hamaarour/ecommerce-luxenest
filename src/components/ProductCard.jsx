@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
 
   // Handle share button click
   const handleShareClick = async () => {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/${id}`;
+    const url = `${window.location.origin}/products/${id}`;
 
     try {
       await navigator.clipboard.writeText(url);
@@ -62,9 +62,11 @@ const ProductCard = ({ product }) => {
         setIsShared(false);
       }, 2000);
     } catch (err) {
+      console.error("Error copying link:", err);
       toast.error("Failed to copy link");
     }
   };
+
 
   // Handle Add to Cart
   const handleAddToCart = () => {
@@ -127,11 +129,10 @@ const ProductCard = ({ product }) => {
       <div className="px-4 pb-4 flex items-center gap-4">
         <button
           onClick={handleAddToCart}
-          className={`px-4 py-2 rounded-lg transition-colors w-full sm:w-auto ${
-            isInCart
+          className={`px-4 py-2 rounded-lg transition-colors w-full sm:w-auto ${isInCart
               ? "bg-gray-200 text-gray-800 hover:bg-gray-300"
               : "bg-black text-white hover:bg-gray-800"
-          }`}
+            }`}
         >
           {isInCart ? "Remove from cart" : "Add to cart"}
         </button>
@@ -147,11 +148,10 @@ const ProductCard = ({ product }) => {
             className="relative hover:text-black transition-colors duration-300"
           >
             <Heart
-              className={`w-5 h-5 transition-all duration-300 ${
-                isFavorite
+              className={`w-5 h-5 transition-all duration-300 ${isFavorite
                   ? "fill-red-500 text-red-500 scale-110"
                   : "hover:scale-110"
-              }`}
+                }`}
             />
             {showTooltip === "favorite" && (
               <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap">
